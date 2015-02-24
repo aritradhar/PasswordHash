@@ -79,7 +79,7 @@ public class PasswordAES
         byte[] ciPherText = cipher.doFinal(privateKey);
        
         
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        MessageDigest digest = MessageDigest.getInstance("SHA-512");
         byte[] passByte = passward.getBytes();
     
         byte[] all = new byte[passByte.length + salt.length + privateKey.length];
@@ -131,7 +131,7 @@ public class PasswordAES
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(secretBytes, 0, 16, "AES"), new IvParameterSpec(iv));
         byte[] decrypted = cipher.doFinal(cipherText);
        
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        MessageDigest digest = MessageDigest.getInstance("SHA-512");
         byte[] passByte = passward.getBytes();
         byte[] all = new byte[passByte.length + salt.length + decrypted.length];
         System.arraycopy(passByte, 0, all, 0, passByte.length);
@@ -198,7 +198,7 @@ public class PasswordAES
         byte[] decrypted = cipher.doFinal(cipherText);
        
        
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        MessageDigest digest = MessageDigest.getInstance("SHA-512");
         byte[] passByte = passward.getBytes();
         byte[] all = new byte[passByte.length + salt.length + decrypted.length];
         System.arraycopy(passByte, 0, all, 0, passByte.length);
